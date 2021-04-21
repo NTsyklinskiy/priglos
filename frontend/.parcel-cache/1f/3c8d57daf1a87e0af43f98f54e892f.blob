@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/style.39b9ff82.css">
+  <link rel="icon" href="/favicon.0fe785c0.png" sizes="32x32">
+  <title>N&A</title>
+  <script defer="" src="/script.12ba81f7.js"></script>
+</head>
+<body>
+
+  <div class="wrapper">
+    <header id="header" class="header">
+      <div class="container">
+        <nav id="navigation" class="navigation">
+          <ul class="navigation__items">
+            <li><a class="navigation__link" href="#invitation">Приглашение</a></li>
+            <li><a class="navigation__link" href="#where">Где и когда?</a></li>
+            <li><a class="navigation__link" href="">Как добраться</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </header>
+    <main class="main">
+
+      <section class="hello">
+        <div class="container">
+          <span class="first">Мы станем семьёй</span>
+          <span class="second">10 июля 2021 года</span>
+          <div class="hello__contain">
+            <h3 class="hello__name">Свадьба</h3>
+            <h1 class="hello__logg">Anna <img src="/favicon.0fe785c0.png"> Nikita</h1>
+            <div id="timer">
+              <div class="days"><span>30</span><span>d</span></div>
+              <div class="hours"><span>12</span><span>h</span></div>
+              <div class="minuts"><span>40</span><span>m</span></div>
+              <div class="seconds"><span>31</span><span>s</span></div>
+            </div>
+          </div>
+          <!-- <div class="hello__title"><span class="first">Мы станем семьёй</span><span class="second">10 июля 2021 года</span></div> -->
+        </div>
+      </section>
+      <section id="invitation" class="invitation">
+              <div class="priglos">
+                <p class="priglos__title">Дорогой Лёша!<br>
+                10 июля 2021 года мы очень хотим оказаться в окружении самых близких и дорогих для нас людей. С огромным удовольствием приглашаем тебя разделить с нами этот волнующий празник - нашу свадьбу!<br> 
+                </p>
+              </div>
+      </section>
+
+      <section class="generally">
+        <div class="container">
+          <div id="where" class="where">
+            <p class="priglos__info">
+              Торжественная часть в ресторане "Тюрли" в 17:00 по адресу: деревня Тюрли, ул. Молодечненская, д.2.
+            </p> 
+            
+          </div>
+          <!-- <div id="interview" class="interview">
+            <form class="interview__form">
+              <h2>Ответьте на пару вопросов для Молодожён</h2>
+              <label for="">Какой алкого?</label>
+              <input type="text" name="" id="">
+              <label for=""></label>
+              <input type="text" name="" id="">
+              <label for=""></label>
+              <input type="text" name="" id="">
+              <label for=""></label>
+              <input type="text" name="" id="">
+              <textarea name="" id="" cols="30" rows="10"></textarea>
+              <button>Отправить Ваш Ответ Молодожёнам</button>
+            </form>
+          </div> -->
+        </div>
+      </section>  
+    </main>
+    <footer>
+
+    </footer>
+    <div class="modal">
+      <div class="overflow"></div>
+      <form method="POST" calss="modal-form">
+        <h2>Дорогой Гость раз ты получил это приглашение введи своё имя и фамилию и получи пригласительное со всей информацией</h2>
+        <label for="firstName">Ваше Имя:</label>
+        <input type="text" name="firstName" id="firstName">
+        <label for="lastName">Ваша Фамилия:</label>
+        <input type="text" name="lastName" id="lastName">
+        <button>Отправить</button>
+      </form>
+    </div>
+  </div>
+  
+</body>
+</html>

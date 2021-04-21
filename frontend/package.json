@@ -1,0 +1,15 @@
+{
+  "name": "svadba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel index.html --public-url ./dist/"
+  },
+  "author": "Nikita",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.1"
+  }
+}

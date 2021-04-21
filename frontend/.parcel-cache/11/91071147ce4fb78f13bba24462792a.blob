@@ -1,0 +1,179 @@
+'use strict'; // let bg = document.querySelector('.container__heart--bg')
+// window.addEventListener('scroll', function() {
+//   bg.style.backgroundSize = `${100 + value}px`;
+//   bg.style.opacity = `-${(100 + value * 2) / (100 + docValue[0].height * 2) - 1}`;
+// })
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+class Component {
+  constructor() {
+    this.getElementToId(); // this.getBCR();
+  }
+
+  getElementToId(id) {
+    let element;
+
+    if (id === '') {
+      element = window;
+    } else {
+      element = document.getElementById(id);
+    }
+
+    return element;
+  }
+
+  static fonAnim(el, param) {
+    // fo
+    for (let i = 0; i < 20; i++) {
+      const ee = Math.random() * (15 - 5) + 5;
+      console.log(ee);
+      const wrapper = document.querySelector('.main');
+      const element = document.createElement('span');
+      element.style.cssText = `
+      position:absolute;
+      left:${i < 10 ? i : i - 10}${Math.random() * 10}%;
+      width: ${ee}%;
+      height: ${ee}%;
+      top: 50%;
+      background: url('data:image/svg+xml,\<svg viewBox="0 -28 512.00002 512" xmlns="http://www.w3.org/2000/svg"><path fill="rgba(255,255,255,.51)" d="m471.382812 44.578125c-26.503906-28.746094-62.871093-44.578125-102.410156-44.578125-29.554687 0-56.621094 9.34375-80.449218 27.769531-12.023438 9.300781-22.917969 20.679688-32.523438 33.960938-9.601562-13.277344-20.5-24.660157-32.527344-33.960938-23.824218-18.425781-50.890625-27.769531-80.445312-27.769531-39.539063 0-75.910156 15.832031-102.414063 44.578125-26.1875 28.410156-40.613281 67.222656-40.613281 109.292969 0 43.300781 16.136719 82.9375 50.78125 124.742187 30.992188 37.394531 75.535156 75.355469 127.117188 119.3125 17.613281 15.011719 37.578124 32.027344 58.308593 50.152344 5.476563 4.796875 12.503907 7.4375 19.792969 7.4375 7.285156 0 14.316406-2.640625 19.785156-7.429687 20.730469-18.128907 40.707032-35.152344 58.328125-50.171876 51.574219-43.949218 96.117188-81.90625 127.109375-119.304687 34.644532-41.800781 50.777344-81.4375 50.777344-124.742187 0-42.066407-14.425781-80.878907-40.617188-109.289063zm0 0"/></svg>') no-repeat 50% 50%;
+      filter: blur(8px);
+      mix-blend-mode: screen;
+      `;
+      wrapper.insertAdjacentElement('beforebegin', element);
+      element.animate({
+        opacity: [0, 0.9, 1],
+        offset: [0, 0.8],
+        // Shorthand for [ 0, 0.8, 1 ]
+        easing: ['ease-in', 'ease-out']
+      }, 2000);
+    }
+  }
+
+} // rgba(255,255,115, .4)
+
+
+class App {
+  static init() {
+    Component.fonAnim();
+    const navHover = new Listeners('navigation', 'mouseover mouseout', '0.5 1');
+    navHover.listenerHeader();
+    const navClick = new Listeners('header', 'click');
+    navClick.listenerHeader();
+    const navScroll = new Listeners('', 'scroll', 'timer .priglos');
+    navScroll.listenerHeader();
+  }
+
+}
+
+class Listeners extends Component {
+  constructor(id, type, param) {
+    super();
+    this.id = id;
+    this.type = type;
+    this.param = param;
+  }
+
+  navHover(ob, e) {
+    // console.log(ob, e)
+    if (e.target.classList.contains('navigation__link')) {
+      const link = e.target;
+      const siblings = link.closest('.navigation__items').querySelectorAll('.navigation__link');
+      siblings.forEach(el => {
+        if (el !== link) {
+          el.style.opacity = ob;
+        }
+      });
+    }
+  }
+
+  navClick(e) {
+    e.preventDefault();
+    const elAll = document.querySelectorAll('.navigation__link');
+    const elRect = [];
+
+    for (const el of elAll) {
+      const attr = el.getAttribute('href');
+
+      if (attr) {
+        const rect = document.querySelector(attr).getBoundingClientRect();
+        elRect.push([attr, rect]);
+      }
+    }
+
+    elRect.forEach(elR => {
+      if (e.target.getAttribute('href') === elR[0]) {
+        window.scrollTo({
+          left: elR[1].left + window.pageXOffset,
+          top: elR[1].top + window.pageYOffset,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+  navScroll(id, param, e) {
+    const value = window.scrollY;
+    const docValue = document.getElementById(id).offsetTop;
+    const elHeart = document.querySelector(param);
+    if (value > docValue) elHeart.classList.add('focus');
+  }
+
+  listenerHeader() {
+    const el = this.getElementToId(this.id);
+    this.type.split(' ').forEach(t => {
+      if (t === 'mouseover') {
+        el.addEventListener(t, this.navHover.bind(null, this.param.split(' ')[0]));
+      } else if (t === 'mouseout') {
+        el.addEventListener(t, this.navHover.bind(null, this.param.split(' ')[1]));
+      } else if (t === 'click') {
+        el.addEventListener(t, this.navClick.bind(this));
+      } else if (t === 'scroll') {
+        console.log(el.addEventListener('scroll', console.log('err')));
+        window.addEventListener(t, this.navScroll.bind(null, this.param.split(' ')[0], this.param.split(' ')[1]));
+      }
+    });
+  }
+
+}
+
+class Timer {
+  static startLogOutTimer() {
+    const tick = () => {
+      const labelTimer = document.querySelector(this.id),
+            labelSec = labelTimer.querySelector('.seconds span '),
+            labelMin = labelTimer.querySelector('.minuts span '),
+            labelHours = labelTimer.querySelector('.hours span '),
+            labelDays = labelTimer.querySelector('.days span '),
+            time = Date.parse(this.endtime) - Date.parse(new Date()),
+            sec = String(Math.floor(time / 1000 % 60)).padStart(2, 0),
+            min = String(Math.floor(time / 1000 / 60 % 60)).padStart(2, 0),
+            hours = String(Math.floor(time / (1000 * 60 * 60) % 24)).padStart(2, 0),
+            days = String(Math.floor(time / (1000 * 60 * 60 * 24))).padStart(2, 0);
+      labelSec.textContent = sec;
+      labelMin.textContent = min;
+      labelHours.textContent = hours;
+      labelDays.textContent = days;
+
+      if (time === 0) {
+        clearInterval(timer);
+      }
+    };
+
+    tick();
+    const timer = setInterval(tick, 1000);
+    return timer;
+  }
+
+}
+
+_defineProperty(Timer, "endtime", new Date('2021-06-10:15:00'));
+
+_defineProperty(Timer, "id", '#timer');
+
+Timer.startLogOutTimer();
+App.init(); // importNode(element, true)   cloneNode(true) replaceWith 
+// window.addEventListener('scroll', (e)=> {
+//   console.log('Current scroll (X/Y', window.pageYOffset,window.scrollY);
+//   // console.log(elHeart)
+// })
