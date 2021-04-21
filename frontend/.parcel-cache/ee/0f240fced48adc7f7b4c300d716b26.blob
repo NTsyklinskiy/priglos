@@ -1,0 +1,42 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+var _modelJs = require('./model.js');
+require('./config.js');
+require('core-js/stable');
+require('regenerator-runtime/runtime');
+require('regenerator-runtime');
+class Controller {
+  constructor() {
+    this.form = document.querySelector('.modal-form');
+    this.modal = document.querySelector('.modal');
+    this.priglos = document.querySelector('.priglos__title');
+  }
+  addClass() {
+    console.log(this);
+    document.body.style.overflow = 'visible';
+    this.modal.classList.add('hidden');
+    setTimeout(() => {
+      this.modal.style.display = 'none';
+    }, 1000);
+    this.priglos.textContent = _modelJs.state.user.options;
+  }
+  async controlLogin(user) {
+    try {
+      await _modelJs.signIn(user);
+      window.history.pushState(null, '', `/#me`);
+      const addCl = this.addClass;
+      addCl();
+    } catch (err) {
+      throw err;
+    }
+  }
+  handlerForm(callback) {
+    this.form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const dataArr = [...new FormData(this)];
+      const data = Object.fromEntries(dataArr);
+      callback(data);
+    });
+  }
+}
+exports.default = Controller;

@@ -1,0 +1,52 @@
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+_parcelHelpers.defineInteropFlag(exports);
+_parcelHelpers.export(exports, "state", function () {
+  return state;
+});
+_parcelHelpers.export(exports, "init", function () {
+  return init;
+});
+_parcelHelpers.export(exports, "signIn", function () {
+  return signIn;
+});
+_parcelHelpers.export(exports, "UserInfo", function () {
+  return UserInfo;
+});
+require("regenerator-runtime");
+var _configJs = require('./config.js');
+var _helperJs = require("./helper.js");
+const state = {
+  user: {
+    id: '',
+    token: '',
+    lastName: '',
+    firstName: '',
+    options: ''
+  }
+};
+const init = function () {
+  const storageUser = localStorage.getItem('user');
+  if (storageUser) {
+    state.user = JSON.parse(storageUser);
+  }
+};
+init();
+const signIn = async function (user) {
+  try {
+    const data = await _helperJs.AJAX(`${_configJs.API_URL}priglos/login`, user);
+    console.log(data);
+    state.user = {
+      token: data.token,
+      id: data.data.user._id,
+      firstName: data.data.user.firstName,
+      lastName: data.data.user.lastName,
+      options: data.data.user.options
+    };
+    UserInfo();
+  } catch (err) {
+    throw err;
+  }
+};
+const UserInfo = function () {
+  localStorage.setItem('user', JSON.stringify(state.user));
+};

@@ -6,7 +6,7 @@ import Listeners from './Listeners.js'
 import Controller from './controller.js'
   class App {
   static init() {
-      Timer.startLogOutTimer()
+      const timer = new Timer()
       Component.fonAnim()
       const controller = new Controller()
       controller.handlerForm(controller.controlLogin)

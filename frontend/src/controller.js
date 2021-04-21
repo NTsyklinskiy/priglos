@@ -12,20 +12,19 @@ export default class Controller{
     this.priglos = document.querySelector('.priglos__title')
   }
 
-  addClass() {
-    document.body.style.overflow = 'visible';
-    this.modal.classList.add('hidden');
-    setTimeout(()=> {
-      this.modal.style.display = 'none';
-    }, 1000)
-    this.priglos.textContent = model.state.user.options;
-  }
-
-  controlLogin = async (user) =>{
+  async controlLogin(user){
     try{
       await model.signIn(user);
       window.history.pushState(null, '', `/#me`);
-       this.addClass()
+      const addClass = function() {
+        document.body.style.overflow = 'visible';
+        document.querySelector('.modal').classList.add('hidden');
+        setTimeout(()=> {
+          document.querySelector('.modal').style.display = 'none';
+        }, 1000)
+        document.querySelector('.priglos__title').textContent = model.state.user.options;
+      }
+      addClass()
     } catch (err) {
       throw err;   
     }

@@ -1,9 +1,13 @@
 
 export default class Timer {
-  static endtime = new Date('2021-07-10:15:00');
-  static id = '#timer';
+  
+  constructor(){
+    this.endtime = new Date('2021-07-10:15:00');
+    this.id = '#timer';
+    this.startLogOutTimer()
+  }
 
-  static startLogOutTimer(){
+  startLogOutTimer(){
     const tick = () => {
       const labelTimer = document.querySelector(this.id),
             labelSec = labelTimer.querySelector('.seconds span '),

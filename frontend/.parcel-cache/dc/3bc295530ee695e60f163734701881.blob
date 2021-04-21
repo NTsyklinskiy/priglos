@@ -1,0 +1,25 @@
+"use strict";
+var _TimerJs = require('./Timer.js');
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _TimerJsDefault = _parcelHelpers.interopDefault(_TimerJs);
+var _ComponentJs = require('./Component.js');
+var _ComponentJsDefault = _parcelHelpers.interopDefault(_ComponentJs);
+var _ListenersJs = require('./Listeners.js');
+var _ListenersJsDefault = _parcelHelpers.interopDefault(_ListenersJs);
+var _controllerJs = require('./controller.js');
+var _controllerJsDefault = _parcelHelpers.interopDefault(_controllerJs);
+class App {
+  static init() {
+    const timer = new _TimerJsDefault.default();
+    _ComponentJsDefault.default.fonAnim();
+    const controller = new _controllerJsDefault.default();
+    controller.handlerForm(controller.controlLogin);
+    const navHover = new _ListenersJsDefault.default('navigation', 'mouseover mouseout', '0.5 1');
+    navHover.listenerHeader();
+    const navClick = new _ListenersJsDefault.default('header', 'click');
+    navClick.listenerHeader();
+    const navScroll = new _ListenersJsDefault.default('', 'scroll', 'timer .priglos');
+    navScroll.listenerHeader();
+  }
+}
+App.init();
