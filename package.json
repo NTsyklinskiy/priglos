@@ -5,9 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon  --watch backend --exec babel-node backend/server.js",
-    "build": "rm -rf dest && babel backend -d dist",
-    "heroku-prebuild": "cd frontend && npm install && npm run start",
-    "heroku-postbuild": "npm run build && cd frontend && npm install && npm run start && npm run build"
+    "build": "rm -rf dest && babel backend -d dist"
   },
   "keywords": [],
   "author": "",
