@@ -9,6 +9,10 @@
   },
   "keywords": [],
   "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NTsyklinskiy/priglos.git"
+  },
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
